@@ -1,0 +1,45 @@
+{
+  "args": {
+    "data": "data/KaggleV2-May-2016.csv",
+    "out": "results_unseen",
+    "figures": "figures_unseen",
+    "seeds": 5,
+    "n_boot": 500,
+    "train_frac": 0.6,
+    "val_frac": 0.2,
+    "exclude_sms": false,
+    "unseen_patients": true
+  },
+  "data_sha256": "9132d3e7d0246617df9041d3764f20ad6f08e7b0d9f0997fa254fc5e52eda27d",
+  "cleaning_report": {
+    "rows_raw": 110527,
+    "dropped_duplicate_appointment_id": 0,
+    "dropped_negative_lead_days": 5,
+    "dropped_invalid_age": 1,
+    "rows_clean": 110521,
+    "no_show_rate_clean": 0.2018982817745044,
+    "unique_patients": 62298,
+    "rows_with_repeated_patient": 72601,
+    "appointment_day_min": "2016-04-29",
+    "appointment_day_max": "2016-06-08"
+  },
+  "features": [
+    "age",
+    "lead_days",
+    "scheduled_hour",
+    "appt_weekday",
+    "sched_weekday",
+    "handicap",
+    "is_female",
+    "scholarship",
+    "hypertension",
+    "diabetes",
+    "alcoholism",
+    "sms_received",
+    "neighbourhood"
+  ],
+  "python": "3.13.18",
+  "sklearn": "1.9.1",
+  "pandas": "3.0.5",
+  "numpy": "2.5.3"
+}

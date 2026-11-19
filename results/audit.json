@@ -1,0 +1,46 @@
+{
+  "n_rows_raw": 110527,
+  "n_columns": 14,
+  "missing_per_column": {
+    "patient_id": 0,
+    "appointment_id": 0,
+    "gender": 0,
+    "scheduled_day": 0,
+    "appointment_day": 0,
+    "age": 0,
+    "neighbourhood": 0,
+    "scholarship": 0,
+    "hypertension": 0,
+    "diabetes": 0,
+    "alcoholism": 0,
+    "handicap": 0,
+    "sms_received": 0,
+    "no_show": 0
+  },
+  "age_min": -1.0,
+  "age_max": 115.0,
+  "handicap_values": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "n_neighbourhoods": 81,
+  "target_values": [
+    "No",
+    "Yes"
+  ],
+  "cleaning": {
+    "rows_raw": 110527,
+    "dropped_duplicate_appointment_id": 0,
+    "dropped_negative_lead_days": 5,
+    "dropped_invalid_age": 1,
+    "rows_clean": 110521,
+    "no_show_rate_clean": 0.2018982817745044,
+    "unique_patients": 62298,
+    "rows_with_repeated_patient": 72601,
+    "appointment_day_min": "2016-04-29",
+    "appointment_day_max": "2016-06-08"
+  }
+}

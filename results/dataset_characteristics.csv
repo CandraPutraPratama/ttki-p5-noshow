@@ -1,0 +1,4 @@
+split,n_rows,start_date,end_date,no_show_rate,n_patients,pct_rows_patient_seen_in_earlier_split
+train,67360,2016-04-29,2016-05-20,0.2109,44253,0.0
+validation,21175,2016-05-24,2016-06-01,0.1906,17246,49.93
+test,21986,2016-06-02,2016-06-08,0.1851,18212,55.47

@@ -1,0 +1,11 @@
+studi,doi_atau_url,jenis,temuan_relevan,status_baca
+"van den Goorbergh et al. 2022","10.1093/jamia/ocac093","simulasi","Resampling tidak menaikkan AUC dan merusak kalibrasi; menggeser threshold memberi hasil serupa","abstrak"
+"Oikonomidi et al. 2023","10.1093/jamia/ocac242","rapid review","Pengingat berbasis model kemungkinan efektif; perlu riset intervensi bertarget vs semua pasien","abstrak"
+"Rafique et al. 2025","10.3389/frai.2025.1652397","data RS anak","XGBoost AUC 0,96 dan F1 0,62 untuk no-show; kalibrasi sebagai kata kunci","abstrak"
+"Carreras-Garcia et al. 2020","10.3390/e22060675","systematic review","31/50 studi satu split; 13/50 diuji pada data latih; AUC 29 studi, accuracy 21 studi","ringkasan hasil"
+"Toffaha et al. 2025","10.1016/j.ibmed.2025.100229","review","52 publikasi 2010-2025; saran sumber data baru dan transfer learning","abstrak"
+"Deina et al. 2024","10.1186/s12913-023-10418-6","data RS Brasil","Kerangka untuk data tidak seimbang; dua dataset no-show 6,65% dan 19,03%","abstrak"
+"Salazar et al. 2022","10.3390/fi14010003","data privat","Menyebut dataset Kaggle sebagai satu-satunya dataset publik no-show yang dipakai kebanyakan peneliti","pendahuluan"
+"Abushaaban dan Agaoglu 2022","10.1109/icmi55296.2022.9873652","konferensi","Perbandingan algoritma dengan teknik balancing","abstrak"
+"Alshaya et al. 2019","https://doras.dcu.ie/25441","konferensi","Reduksi dimensi dan penanganan imbalance","abstrak"
+"Reid et al. 2015","pubmed 26671702","validasi prospektif","Overbooking prediktif: utilisasi 62% ke 97% (proyeksi)","abstrak"
