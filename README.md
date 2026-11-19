@@ -26,6 +26,8 @@ python -m pip freeze > environment-freeze.txt
 
 Dibutuhkan scikit-learn 1.6 atau lebih baru (memakai `FrozenEstimator`). Versi yang dipakai tiap run dicatat otomatis di `results/run_config.json`.
 
+Run yang dilaporkan di paper: Python 3.13.18, scikit-learn 1.9.1, pandas 3.0.5, numpy 2.5.3 (Linux). Penulis menjalankan ulang di laptop Windows dan memperoleh angka yang sama (selisih 0,0). Daftar paket lengkap ada di `environment-freeze.txt`.
+
 ## Urutan menjalankan
 
 ```bash
@@ -38,6 +40,21 @@ python src/run_experiments.py --data data/<nama-file>.csv --out results --figure
 # 3. Sensitivitas (opsional, dilaporkan sebagai analisis tambahan)
 python src/run_experiments.py --data data/<nama-file>.csv --out results_no_sms --figures figures_no_sms --exclude-sms
 python src/run_experiments.py --data data/<nama-file>.csv --out results_unseen --figures figures_unseen --unseen-patients
+
+# 4. Confusion matrix (Tabel 3 di paper; LR dan RF seed 0)
+python src/confusion_matrices.py --data data/<nama-file>.csv --out results
+```
+
+Alur kerja proyek:
+
+```mermaid
+flowchart TD
+    A[Unduh KaggleV2-May-2016.csv] --> B[Audit dan pembersihan]
+    B --> C[Split kronologis 60/20/20 menurut AppointmentDay]
+    C --> D[Latih LR dan RF pada data latih]
+    D --> E[Pilih threshold dan fit kalibrasi pada validasi]
+    E --> F[Evaluasi sekali pada data uji]
+    F --> G[Sensitivitas: tanpa SMS, pasien baru]
 ```
 
 ## Rancangan eksperimen
@@ -71,8 +88,15 @@ Metrik: PR-AUC, ROC-AUC, precision@10%, recall@10%, lift@10%, Brier score, ECE, 
 | `results/metrics.csv` | Metrik per skenario, model, dan seed |
 | `results/summary.csv` | Rata-rata dan simpangan baku antar seed |
 | `results/bootstrap_ci.csv` | Interval kepercayaan bootstrap |
+| `results/confusion_matrices.csv` | TP, FP, FN, TN per skenario (LR dan RF seed 0) |
 | `results/run_config.json` | Argumen, versi paket, hash SHA-256 data |
 | `figures/` | Kurva PR, reliability diagram, precision@k |
+
+Angka utama yang seharusnya muncul di `results/summary.csv` (data uji, kapasitas 10%): precision@10% Random Forest 0,369, Logistic Regression 0,339, heuristik `lead_days` 0,318, acak 0,181. Kalau hasilmu berbeda, periksa SHA-256 berkas data dan versi paket.
+
+## Paper
+
+Naskah paper disimpan di `paper/` setelah dipindahkan ke template dosen. Matriks literatur ada di `references/literature_matrix.csv`, log penelusuran gap di `references/gap_search_log.csv`.
 
 ## Keterbatasan yang perlu dilaporkan
 
@@ -95,4 +119,6 @@ Kode di repositori ini berlisensi MIT (lihat `LICENSE`). Lisensi itu hanya berla
 
 ## Integritas akademik
 
-Tidak ada token Kaggle, kata sandi, atau data privat di repositori ini. Jika memakai bantuan AI untuk kode atau tulisan, laporkan sesuai kebijakan kelas.
+Tidak ada token Kaggle, kata sandi, atau data privat di repositori ini.
+
+Penggunaan AI: Claude (Anthropic) dipakai untuk membantu menyusun kode eksperimen, analisis, dan draf tulisan. Seluruh hasil dijalankan ulang oleh penulis dan dicocokkan dengan keluaran yang dilaporkan; penulis bertanggung jawab atas isi repositori dan paper.

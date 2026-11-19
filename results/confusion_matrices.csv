@@ -1,0 +1,9 @@
+scenario,model,seed,n_test,TP,FP,FN,TN
+baseline_thr0.5,logreg,0,21986,168,241,3902,17675
+A_tuned_threshold,logreg,0,21986,2508,6385,1562,11531
+A2_capacity_threshold,logreg,0,21986,626,1219,3444,16697
+C_top10pct,logreg,0,21986,746,1453,3324,16463
+baseline_thr0.5,random_forest,0,21986,9,28,4061,17888
+A_tuned_threshold,random_forest,0,21986,2915,6865,1155,11051
+A2_capacity_threshold,random_forest,0,21986,599,1012,3471,16904
+C_top10pct,random_forest,0,21986,814,1385,3256,16531
