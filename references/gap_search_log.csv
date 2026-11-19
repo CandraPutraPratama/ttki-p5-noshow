@@ -1,0 +1,11 @@
+date,engine,query,mode,notes
+2026-11-19,WebSearch,no-show prediction Kaggle Medical Appointment No Shows precision at top-k capacity,standard,Studies on Kaggle data report AUC/accuracy/recall; capacity metrics seen only in an industry conference slide deck (non-public data)
+2026-11-19,WebSearch,appointment no-show prediction probability calibration isotonic Platt Brier,standard,Calibration papers found are general or other datasets; no Kaggle-dataset isotonic/sigmoid comparison seen
+2026-11-19,WebSearch,no-show prediction temporal validation chronological split data leakage,standard,No peer-reviewed no-show study with chronological split on Kaggle data seen in top results
+2026-11-19,WebSearch,no-show prediction decision threshold optimization cost-sensitive learning,standard,Dunstan 2023 (Chile) cost-effective thresholding; Huang and Hanauer overbooking thresholds
+2026-11-19,WebSearch,joniarroba noshowappointments Brazil dataset machine learning random forest logistic regression,standard,Salazar 2022; Deina 2024; Alshaya 2019 context; many GitHub/blog analyses (not peer reviewed)
+2026-11-19,WebSearch,targeted reminders limited capacity no-show risk ranking top decile lift,standard,Mostly intervention studies and vendor blogs
+2026-11-19,WebSearch,patient no-show prediction calibration reliability diagram outpatient,standard,Ding 2018 JAMIA; Reategui-Rivera 2025 telemedicine cost-sensitive
+2026-11-19,WebSearch,medical appointment no-show prediction PR-AUC precision-recall imbalanced evaluation,standard,Qureshi 2021 (different EHR data); Azara slides again
+2026-11-19,WebSearch,medRxiv imbalance correction appointment no-show prediction AUPRC calibration net benefit high risk proportion inflated,standard,Only a blog post quoting a medRxiv preprint; original not found; NOT used as a source
+2026-11-19,WebSearch,Kaggle Medical Appointment No Shows 110527 calibration threshold temporal split recall precision top decile,standard,No identical study found

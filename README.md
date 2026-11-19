@@ -4,13 +4,13 @@ Repositori ini memuat kode untuk proyek akhir Tata Tulis Karya Ilmiah (PENS, sem
 
 **Research question:** Apakah optimasi threshold dan kalibrasi probabilitas meningkatkan kualitas prioritisasi pasien berisiko no-show pada kapasitas pengingat 10%?
 
-**Status:** kode siap dijalankan. Semua angka hasil harus berasal dari run Anda sendiri pada CSV Kaggle; folder `results/` sengaja kosong sampai itu dilakukan.
+**Status:** eksperimen sudah lengkap. Eksperimen utama (`results/`), sensitivitas tanpa SMS (`results_no_sms/`), dan sensitivitas pasien belum pernah terlihat (`results_unseen/`) sudah dijalankan pada CSV Kaggle, beserta gambar di `figures*/`. Run ulang di mesin lain memberi hasil yang sama. Log pencarian gap ada di `references/gap_search_log.csv`.
 
 ## Sumber data dan atribusi
 
 - Dataset: Medical Appointment No Shows, Kaggle, <https://www.kaggle.com/datasets/joniarroba/noshowappointments>
 - Berkas yang dipakai: `KaggleV2-May-2016.csv` (110.527 baris, 14 kolom), SHA-256 `9132d3e7d0246617df9041d3764f20ad6f08e7b0d9f0997fa254fc5e52eda27d`.
-- Lisensi: CC BY-NC-SA 4.0, <https://creativecommons.org/licenses/by-nc-sa/4.0/> (tautan diberikan anggota kelompok; cocokkan dengan halaman Kaggle). Tanggal unduh: `[isi]`.
+- Lisensi: CC BY-NC-SA 4.0, <https://creativecommons.org/licenses/by-nc-sa/4.0/> (tautan diberikan anggota kelompok; cocokkan dengan halaman Kaggle). Versi berkas diverifikasi lewat hash SHA-256 di atas.
 - Repositori referensi baseline: <https://github.com/Rachel-Oyeyemi/Medical-Appointment-No-Shows> (memakai data sintetis; tidak ada angka dari repositori itu yang dipakai di sini).
 - Berkas CSV tidak dikomit. Unduh sendiri dari Kaggle dan taruh di `data/` (lihat `data/README.md`).
 
