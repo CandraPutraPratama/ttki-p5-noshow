@@ -31,7 +31,7 @@ Run yang dilaporkan di paper: Python 3.13.18, scikit-learn 1.9.1, pandas 3.0.5, 
 ## Urutan menjalankan
 
 ```bash
-# 1. Audit dataset (catat hasilnya di bagian Methods)
+# 1. Audit dataset (hasilnya dilaporkan di bagian Metode paper)
 python src/audit_dataset.py --data data/<nama-file>.csv
 
 # 2. Eksperimen utama: baseline, skenario A, B, C
@@ -41,7 +41,7 @@ python src/run_experiments.py --data data/<nama-file>.csv --out results --figure
 python src/run_experiments.py --data data/<nama-file>.csv --out results_no_sms --figures figures_no_sms --exclude-sms
 python src/run_experiments.py --data data/<nama-file>.csv --out results_unseen --figures figures_unseen --unseen-patients
 
-# 4. Confusion matrix (Tabel 3 di paper; LR dan RF seed 0)
+# 4. Confusion matrix (Tabel III di paper; LR dan RF seed 0)
 python src/confusion_matrices.py --data data/<nama-file>.csv --out results
 ```
 
@@ -73,9 +73,9 @@ Skenario:
 
 - **baseline**: Logistic Regression dan Random Forest, threshold 0,5.
 - **A**: threshold dipilih pada validation set dengan kriteria F1 maksimum, lalu diterapkan ke test.
-- **A2** (eksploratif, ditambahkan setelah run pertama): threshold sama dengan persentil ke-90 skor validation, sehingga kira-kira 10% janji temu ditandai tanpa melihat test. Laporkan sebagai analisis tambahan.
+- **A2** (eksploratif, ditambahkan setelah run pertama): threshold sama dengan persentil ke-90 skor validation, sehingga kira-kira 10% janji temu ditandai tanpa melihat test. Dilaporkan sebagai analisis tambahan.
 - **B**: probabilitas dikalibrasi (sigmoid dan isotonic) pada validation set yang terpisah dari train dan test.
-- **C**: capaian pada kapasitas 10% teratas (precision@10%, recall@10%, lift) untuk semua skor, dibandingkan dengan pemilihan acak dan heuristik `lead_days`.
+- **C**: capaian pada kapasitas 10% teratas (precision@10%, recall@10%, lift) untuk semua skor, dibandingkan dengan pemilihan acak dan heuristik `lead_days`. Angka 10% adalah skenario kapasitas yang diasumsikan, bukan kapasitas klinik tertentu.
 
 Metrik: PR-AUC, ROC-AUC, precision@10%, recall@10%, lift@10%, Brier score, ECE, serta precision/recall/F1 pada threshold. Interval kepercayaan 95% (bootstrap baris, seed 0) ada di `results/bootstrap_ci.csv`.
 
@@ -96,13 +96,16 @@ Angka utama yang seharusnya muncul di `results/summary.csv` (data uji, kapasitas
 
 ## Paper
 
-Naskah paper disimpan di `paper/` setelah dipindahkan ke template dosen. Matriks literatur ada di `references/literature_matrix.csv`, log penelusuran gap di `references/gap_search_log.csv`.
+Naskah paper ada di `paper/TTKI_Kelompok11_TopikP5.docx`: format IEEE conference dua kolom (A4), 6 halaman, sitasi IEEE [1]–[11]. Angka di paper berasal dari berkas di `results/`, `results_no_sms/`, dan `results_unseen/`. Matriks literatur ada di `references/literature_matrix.csv`, log penelusuran gap di `references/gap_search_log.csv`.
 
 ## Keterbatasan yang perlu dilaporkan
 
 - Satu pasien bisa muncul di beberapa split pada split kronologis; tumpang tindihnya tercatat di `dataset_characteristics.csv`, dan sensitivitas `--unseen-patients` menguji dampaknya.
 - `SMS_received` bersifat observasional. Jangan menyimpulkan efek kausal SMS terhadap kehadiran.
 - Data berasal dari satu kota dan satu periode; generalisasi terbatas.
+- Bootstrap meresampel baris, bukan pasien, sehingga interval kemungkinan terlalu sempit. Belum ada uji berpasangan antarmodel.
+- Skenario A2 ditambahkan setelah run pertama dan bersifat eksploratif. Hiperparameter model tidak di-tuning.
+- Audit kewajaran antarkelompok pasien tidak dilakukan.
 
 ## Pengujian kode
 
