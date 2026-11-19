@@ -4,13 +4,13 @@ Repositori ini memuat kode untuk proyek akhir Tata Tulis Karya Ilmiah (PENS, sem
 
 **Research question:** Apakah optimasi threshold dan kalibrasi probabilitas meningkatkan kualitas prioritisasi pasien berisiko no-show pada kapasitas pengingat 10%?
 
-**Status:** eksperimen sudah lengkap. Eksperimen utama (`results/`), sensitivitas tanpa SMS (`results_no_sms/`), dan sensitivitas pasien belum pernah terlihat (`results_unseen/`) sudah dijalankan pada CSV Kaggle, beserta gambar di `figures*/`. Run ulang di mesin lain memberi hasil yang sama. Log pencarian gap ada di `references/gap_search_log.csv`.
+**Status:** kode dan hasil eksperimen lengkap. Semua angka di `results/`, `results_no_sms/`, dan `results_unseen/` berasal dari run penulis pada `KaggleV2-May-2016.csv` dan sudah dijalankan ulang di laptop penulis dengan selisih 0,0 terhadap hasil awal. Untuk mengulang, unduh CSV sendiri (lihat `data/README.md`) dan ikuti urutan di bawah.
 
 ## Sumber data dan atribusi
 
 - Dataset: Medical Appointment No Shows, Kaggle, <https://www.kaggle.com/datasets/joniarroba/noshowappointments>
 - Berkas yang dipakai: `KaggleV2-May-2016.csv` (110.527 baris, 14 kolom), SHA-256 `9132d3e7d0246617df9041d3764f20ad6f08e7b0d9f0997fa254fc5e52eda27d`.
-- Lisensi: CC BY-NC-SA 4.0, <https://creativecommons.org/licenses/by-nc-sa/4.0/> (tautan diberikan anggota kelompok; cocokkan dengan halaman Kaggle). Versi berkas diverifikasi lewat hash SHA-256 di atas.
+- Lisensi: CC BY-NC-SA 4.0, <https://creativecommons.org/licenses/by-nc-sa/4.0/> (lisensi dikonfirmasi pada halaman Kaggle, 19 November 2026). Tanggal unduh: 19 November 2026 (berkas KaggleV2-May-2016.csv, SHA-256 pada butir sebelumnya). Halaman Kaggle tidak menampilkan nomor versi pada bagian yang diperiksa, jadi berkas diidentifikasi lewat SHA-256. Pemilik di Kaggle: joniarroba; deskripsi dataset menyebut Joni Hoppen dan Aquarela Analytics sebagai rujukan.
 - Repositori referensi baseline: <https://github.com/Rachel-Oyeyemi/Medical-Appointment-No-Shows> (memakai data sintetis; tidak ada angka dari repositori itu yang dipakai di sini).
 - Berkas CSV tidak dikomit. Unduh sendiri dari Kaggle dan taruh di `data/` (lihat `data/README.md`).
 
@@ -88,6 +88,10 @@ Metrik: PR-AUC, ROC-AUC, precision@10%, recall@10%, lift@10%, Brier score, ECE, 
 python tests/make_synthetic_smoke_data.py /tmp/synthetic_smoke.csv
 python src/run_experiments.py --data /tmp/synthetic_smoke.csv --out /tmp/smoke_out --figures /tmp/smoke_fig --seeds 2 --n-boot 50
 ```
+
+## Lisensi
+
+Kode di repositori ini berlisensi MIT (lihat `LICENSE`). Lisensi itu hanya berlaku untuk kode; dataset Kaggle tetap berlisensi CC BY-NC-SA 4.0 dan tidak didistribusikan di sini.
 
 ## Integritas akademik
 
