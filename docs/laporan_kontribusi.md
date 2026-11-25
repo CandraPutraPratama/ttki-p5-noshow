@@ -9,8 +9,8 @@
 
 | Anggota | NRP | Peran dan tanggung jawab | Bagian paper | Porsi kontribusi |
 | --- | --- | --- | --- | --- |
-| Candra Putra Pratama | …………… | Eksperimen, pipeline ML (`src/`), penulisan Metode dan Hasil, pengelolaan GitHub | II (Metode), III (Hasil) | 50% |
-| Farrel Athallah Kurniawan | …………… | Studi literatur, matriks kajian, penulisan Pendahuluan dan Pembahasan, pengecekan sitasi dan format | I (Pendahuluan), IV (Pembahasan) | 50% |
+| Candra Putra Pratama | 3124600086 | Eksperimen, pipeline ML (`src/`), penulisan Metode dan Hasil, pengelolaan GitHub | II (Metode), III (Hasil) | 50% |
+| Farrel Athallah Kurniawan | 3124600089 | Studi literatur, matriks kajian, penulisan Pendahuluan dan Pembahasan, pengecekan sitasi dan format | I (Pendahuluan), IV (Pembahasan) | 50% |
 
 Porsi kontribusi disepakati seimbang antara kedua anggota (50% : 50%).
 
@@ -32,4 +32,4 @@ Surabaya, November 2026
 | --- | --- |
 | &nbsp; | &nbsp; |
 | (tanda tangan) | (tanda tangan) |
-| NRP: …………… | NRP: …………… |
+| NRP: 3124600086 | NRP: 3124600089 |
