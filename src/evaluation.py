@@ -49,6 +49,24 @@ def expected_calibration_error(y: np.ndarray, p: np.ndarray, bins: int = 10) -> 
     return float(ece)
 
 
+def expected_calibration_error_quantile(y: np.ndarray, p: np.ndarray, bins: int = 10) -> float:
+    """ECE dengan bin kuantil (isi tiap bin hampir sama), binning yang sama dengan diagram reliabilitas.
+
+    Tepi bin dihitung seperti `sklearn.calibration.calibration_curve(strategy="quantile")`;
+    bin kosong dilewati. Dilaporkan sebagai pelengkap ECE bin lebar sama.
+    """
+    y = np.asarray(y, dtype=float)
+    p = np.asarray(p, dtype=float)
+    edges = np.percentile(p, np.linspace(0.0, 100.0, bins + 1))
+    ids = np.searchsorted(edges[1:-1], p)
+    ece = 0.0
+    for b in range(bins):
+        m = ids == b
+        if m.any():
+            ece += m.mean() * abs(y[m].mean() - p[m].mean())
+    return float(ece)
+
+
 def best_f1_threshold(y_val: np.ndarray, score_val: np.ndarray) -> float:
     """Threshold yang memaksimalkan F1 pada validation set (bukan test)."""
     p, r, t = precision_recall_curve(y_val, score_val)
@@ -74,6 +92,7 @@ def compute_metrics(
     if probabilistic:
         out["brier"] = float(brier_score_loss(y, score))
         out["ece"] = expected_calibration_error(y, score)
+        out["ece_quantile"] = expected_calibration_error_quantile(y, score)
     if threshold is not None:
         pred = (np.asarray(score) >= threshold).astype(int)
         out.update(

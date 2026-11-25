@@ -8,4 +8,7 @@ kaggle.json
 .ipynb_checkpoints/
 
 *.pdf
+!paper/TTKI_Kelompok11_TopikP5.pdf
 *_rerun/
+
+_refs_pdf/

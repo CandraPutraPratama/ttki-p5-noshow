@@ -74,7 +74,12 @@ def _to_binary_target(s: pd.Series) -> pd.Series:
 
 
 def clean(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
-    """Bersihkan data dan buat fitur yang tersedia saat penjadwalan."""
+    """Bersihkan data dan buat fitur turunan dari kolom penjadwalan.
+
+    lead_days = tanggal AppointmentDay dikurangi tanggal ScheduledDay (keduanya dipotong ke
+    tengah malam, jadi jam tidak berpengaruh). sms_received bersifat observasional dan bisa
+    dikirim setelah penjadwalan; dampaknya diuji terpisah lewat --exclude-sms.
+    """
     report: dict = {"rows_raw": int(len(df))}
     d = df.copy()
 
@@ -107,6 +112,9 @@ def clean(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     report["rows_with_repeated_patient"] = int(d.duplicated("patient_id", keep=False).sum())
     report["appointment_day_min"] = str(d["appointment_day"].min().date())
     report["appointment_day_max"] = str(d["appointment_day"].max().date())
+    all_days = pd.date_range(d["appointment_day"].min().normalize(), d["appointment_day"].max().normalize())
+    present = set(d["appointment_day"].dt.normalize())
+    report["dates_without_appointments"] = [f"{x.date()} ({x.day_name()})" for x in all_days if x not in present]
     return d.reset_index(drop=True), report
 
 

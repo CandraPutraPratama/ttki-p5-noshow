@@ -1,0 +1,5 @@
+# Tambahan hanya untuk menjalankan notebooks/ (kode di src/ tidak membutuhkannya).
+-r requirements.txt
+ipykernel>=6
+nbformat>=5
+nbclient>=0.10

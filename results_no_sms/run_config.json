@@ -21,7 +21,23 @@
     "unique_patients": 62298,
     "rows_with_repeated_patient": 72601,
     "appointment_day_min": "2016-04-29",
-    "appointment_day_max": "2016-06-08"
+    "appointment_day_max": "2016-06-08",
+    "dates_without_appointments": [
+      "2016-04-30 (Saturday)",
+      "2016-05-01 (Sunday)",
+      "2016-05-07 (Saturday)",
+      "2016-05-08 (Sunday)",
+      "2016-05-15 (Sunday)",
+      "2016-05-21 (Saturday)",
+      "2016-05-22 (Sunday)",
+      "2016-05-23 (Monday)",
+      "2016-05-26 (Thursday)",
+      "2016-05-27 (Friday)",
+      "2016-05-28 (Saturday)",
+      "2016-05-29 (Sunday)",
+      "2016-06-04 (Saturday)",
+      "2016-06-05 (Sunday)"
+    ]
   },
   "features": [
     "age",
@@ -37,8 +53,25 @@
     "alcoholism",
     "neighbourhood"
   ],
-  "python": "3.13.18",
+  "feature_info": {
+    "n_features_total": 86,
+    "n_numeric_scaled": 6,
+    "numeric_scaled_columns": [
+      "age",
+      "lead_days",
+      "scheduled_hour",
+      "appt_weekday",
+      "sched_weekday",
+      "handicap"
+    ],
+    "n_binary_passthrough": 5,
+    "neighbourhood_categories_in_train": 81,
+    "neighbourhood_infrequent_merged": 7,
+    "neighbourhood_onehot_columns": 75,
+    "class_weight": "None (default scikit-learn; tanpa resampling)"
+  },
+  "python": "3.11.9",
   "sklearn": "1.9.1",
-  "pandas": "3.0.5",
-  "numpy": "2.5.3"
+  "pandas": "3.1.1",
+  "numpy": "2.4.6"
 }

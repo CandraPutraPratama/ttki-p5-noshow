@@ -4,7 +4,7 @@ Repositori ini memuat kode untuk proyek akhir Tata Tulis Karya Ilmiah (PENS, sem
 
 **Research question:** Apakah optimasi threshold dan kalibrasi probabilitas meningkatkan kualitas prioritisasi pasien berisiko no-show pada kapasitas pengingat 10%?
 
-**Status:** kode dan hasil eksperimen lengkap. Semua angka di `results/`, `results_no_sms/`, dan `results_unseen/` berasal dari run penulis pada `KaggleV2-May-2016.csv` dan sudah dijalankan ulang di laptop penulis dengan selisih 0,0 terhadap hasil awal. Untuk mengulang, unduh CSV sendiri (lihat `data/README.md`) dan ikuti urutan di bawah.
+**Status:** kode dan hasil eksperimen lengkap. Semua angka di `results/`, `results_no_sms/`, dan `results_unseen/` berasal dari run penulis pada `KaggleV2-May-2016.csv`. Berkas di repositori dihasilkan ulang di laptop penulis (Windows, Python 3.11.9) dan cocok dengan run awal (Python 3.13, Linux): selisih maksimum 1,0e-7 pada metrik per run, dan `summary.csv` serta `bootstrap_ci.csv` identik pada empat desimal. Untuk mengulang, unduh CSV sendiri (lihat `data/README.md`) dan ikuti urutan di bawah.
 
 ## Sumber data dan atribusi
 
@@ -24,9 +24,9 @@ pip install -r requirements.txt
 python -m pip freeze > environment-freeze.txt
 ```
 
-Dibutuhkan scikit-learn 1.6 atau lebih baru (memakai `FrozenEstimator`). Versi yang dipakai tiap run dicatat otomatis di `results/run_config.json`.
+Dibutuhkan scikit-learn 1.6 atau lebih baru (memakai `FrozenEstimator`). Untuk menjalankan `notebooks/` pasang juga `pip install -r requirements-notebooks.txt`. Versi yang dipakai tiap run dicatat otomatis di `results/run_config.json`.
 
-Run yang dilaporkan di paper: Python 3.13.18, scikit-learn 1.9.1, pandas 3.0.5, numpy 2.5.3 (Linux). Penulis menjalankan ulang di laptop Windows dan memperoleh angka yang sama (selisih 0,0). Daftar paket lengkap ada di `environment-freeze.txt`.
+Berkas hasil di repositori dihasilkan dengan Python 3.11.9, scikit-learn 1.9.1, pandas 3.1.1, numpy 2.4.6 (Windows); daftar paket lengkap ada di `environment-freeze.txt`. Run awal (Linux) memakai Python 3.13, scikit-learn 1.9.1, pandas 3.0.5, numpy 2.5.3 dan memberi angka yang sama dalam toleransi di atas.
 
 ## Urutan menjalankan
 
@@ -44,6 +44,18 @@ python src/run_experiments.py --data data/<nama-file>.csv --out results_unseen -
 # 4. Confusion matrix (Tabel III di paper; LR dan RF seed 0)
 python src/confusion_matrices.py --data data/<nama-file>.csv --out results
 ```
+
+### Alur utama dan notebook
+
+Alur utama ada di skrip `src/` (urutan di atas). Alur yang sama dapat diikuti langkah demi langkah lewat `notebooks/`, yang hanya memanggil fungsi dari `src/` (tidak menduplikasi logika) dan menyimpan output sel hasil run di `.venv`:
+
+| Notebook | Isi |
+| --- | --- |
+| `notebooks/01_eda.ipynb` | Eksplorasi data, pembersihan, split kronologis |
+| `notebooks/02_baseline.ipynb` | Baseline threshold 0,5 dan pembanding tanpa model; dicocokkan dengan `results/metrics.csv` |
+| `notebooks/03_experiment.ipynb` | Menjalankan `run_experiments.main()` ke `results_rerun/` dan `figures_rerun/` (di-ignore git), membandingkan dengan `results/summary.csv`; butuh beberapa menit |
+
+Jalankan dari folder `notebooks/` dengan data di `data/KaggleV2-May-2016.csv`.
 
 Alur kerja proyek:
 
@@ -63,7 +75,7 @@ flowchart TD
 | --- | --- |
 | Unit observasi | Satu janji temu (`AppointmentID`) |
 | Target | `No-show` (Yes = 1) |
-| Fitur | Usia, jarak hari jadwal ke janji (`lead_days`), jam dan hari penjadwalan, hari janji, jenis kelamin, beasiswa, hipertensi, diabetes, alkoholisme, handicap, `SMS_received`, lingkungan (one-hot, kategori jarang digabung) |
+| Fitur | Usia, jarak hari jadwal ke janji (`lead_days` = tanggal `AppointmentDay` dikurangi tanggal `ScheduledDay`), jam dan hari penjadwalan, hari janji, jenis kelamin, beasiswa, hipertensi, diabetes, alkoholisme, handicap (numerik 0 sampai 4), `SMS_received`, lingkungan (one-hot, kategori dengan kurang dari 50 baris digabung). Enam kolom numerik di-standardisasi, enam kolom biner diteruskan; total 87 fitur. `class_weight` bawaan (None), tanpa resampling |
 | Fitur terlarang | `PatientId`, `AppointmentID` (identitas, tidak dipakai sebagai fitur) |
 | Split | Kronologis menurut `AppointmentDay`: 60% train, 20% validation, 20% test (satu hari penuh selalu di satu bagian) |
 | Kebocoran | Scaler dan encoder di-fit hanya pada train (Pipeline). Test tidak dipakai untuk tuning apa pun |
@@ -77,7 +89,7 @@ Skenario:
 - **B**: probabilitas dikalibrasi (sigmoid dan isotonic) pada validation set yang terpisah dari train dan test.
 - **C**: capaian pada kapasitas 10% teratas (precision@10%, recall@10%, lift) untuk semua skor, dibandingkan dengan pemilihan acak dan heuristik `lead_days`. Angka 10% adalah skenario kapasitas yang diasumsikan, bukan kapasitas klinik tertentu.
 
-Metrik: PR-AUC, ROC-AUC, precision@10%, recall@10%, lift@10%, Brier score, ECE, serta precision/recall/F1 pada threshold. Interval kepercayaan 95% (bootstrap baris, seed 0) ada di `results/bootstrap_ci.csv`.
+Metrik: PR-AUC, ROC-AUC (metrik sekunder), precision@10%, recall@10%, lift@10%, Brier score, ECE bin lebar sama, ECE kuantil (bin yang sama dengan reliability diagram), serta precision/recall/F1 pada threshold. Semua metrik juga dihitung pada validation set (`metrics_validation.csv`, `summary_validation.csv`). Interval kepercayaan 95% (bootstrap baris, seed 0) ada di `results/bootstrap_ci.csv`.
 
 ## Keluaran
 
@@ -87,16 +99,21 @@ Metrik: PR-AUC, ROC-AUC, precision@10%, recall@10%, lift@10%, Brier score, ECE, 
 | `results/dataset_characteristics.csv` | Ukuran, rentang tanggal, no-show rate, dan tumpang tindih pasien per split |
 | `results/metrics.csv` | Metrik per skenario, model, dan seed |
 | `results/summary.csv` | Rata-rata dan simpangan baku antar seed |
+| `results/metrics_validation.csv`, `results/summary_validation.csv` | Metrik yang sama pada data validasi (Tabel VI di paper) |
 | `results/bootstrap_ci.csv` | Interval kepercayaan bootstrap |
 | `results/confusion_matrices.csv` | TP, FP, FN, TN per skenario (LR dan RF seed 0) |
-| `results/run_config.json` | Argumen, versi paket, hash SHA-256 data |
-| `figures/` | Kurva PR, reliability diagram, precision@k |
+| `results/run_config.json` | Argumen, versi paket, hash SHA-256 data, daftar tanggal tanpa janji temu, jumlah fitur setelah one-hot (87) |
+| `figures/` | Kurva PR, reliability diagram, precision@k (300 DPI, label Indonesia) |
 
 Angka utama yang seharusnya muncul di `results/summary.csv` (data uji, kapasitas 10%): precision@10% Random Forest 0,369, Logistic Regression 0,339, heuristik `lead_days` 0,318, acak 0,181. Kalau hasilmu berbeda, periksa SHA-256 berkas data dan versi paket.
 
+## Dokumen pengumpulan
+
+Folder `docs/` berisi `laporan_kontribusi.md`, `pernyataan_kejujuran_akademik.md`, dan `response_to_review.md` (tabel respons peer review, diisi setelah sesi review kelas). PDF paper final ada di `paper/TTKI_Kelompok11_TopikP5.pdf`.
+
 ## Paper
 
-Naskah paper ada di `paper/TTKI_Kelompok11_TopikP5.docx`: format IEEE conference dua kolom (A4), 6 halaman, sitasi IEEE [1]–[11]. Angka di paper berasal dari berkas di `results/`, `results_no_sms/`, dan `results_unseen/`. Matriks literatur ada di `references/literature_matrix.csv`, log penelusuran gap di `references/gap_search_log.csv`.
+Naskah paper ada di `paper/TTKI_Kelompok11_TopikP5.docx`: format IEEE conference dua kolom (A4), 7 halaman, sitasi IEEE [1]–[11]. Angka di paper berasal dari berkas di `results/`, `results_no_sms/`, dan `results_unseen/`. Matriks literatur ada di `references/literature_matrix.csv`, log penelusuran gap di `references/gap_search_log.csv`.
 
 ## Keterbatasan yang perlu dilaporkan
 
