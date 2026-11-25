@@ -7,10 +7,12 @@
 
 ## Pembagian peran
 
-| Anggota | Peran | Tanggung jawab utama | Bagian paper |
-| --- | --- | --- | --- |
-| Candra Putra Pratama | Koordinator eksperimen | Preprocessing, pipeline ML (`src/`), menjalankan eksperimen dan analisis sensitivitas, pengelolaan GitHub | II (Metode), III (Hasil) |
-| Farrel Athallah Kurniawan | Koordinator literatur | Matriks kajian literatur, penulisan Pendahuluan dan Pembahasan, pemeriksaan format dan sitasi | I (Pendahuluan), IV (Pembahasan) |
+| Anggota | NRP | Peran dan tanggung jawab | Bagian paper | Porsi kontribusi |
+| --- | --- | --- | --- | --- |
+| Candra Putra Pratama | …………… | Eksperimen, pipeline ML (`src/`), penulisan Metode dan Hasil, pengelolaan GitHub | II (Metode), III (Hasil) | 50% |
+| Farrel Athallah Kurniawan | …………… | Studi literatur, matriks kajian, penulisan Pendahuluan dan Pembahasan, pengecekan sitasi dan format | I (Pendahuluan), IV (Pembahasan) | 50% |
+
+Porsi kontribusi disepakati seimbang antara kedua anggota (50% : 50%).
 
 ## Pekerjaan bersama
 
@@ -30,3 +32,4 @@ Surabaya, November 2026
 | --- | --- |
 | &nbsp; | &nbsp; |
 | (tanda tangan) | (tanda tangan) |
+| NRP: …………… | NRP: …………… |

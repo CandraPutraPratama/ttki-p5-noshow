@@ -2,10 +2,10 @@
 
 Kami yang bertanda tangan di bawah ini, anggota Kelompok 11 (Topik P5), Program Sarjana Terapan Teknik Informatika, Politeknik Elektronika Negeri Surabaya:
 
-| Nama |
-| --- |
-| Candra Putra Pratama |
-| Farrel Athallah Kurniawan |
+| Nama | NRP |
+| --- | --- |
+| Candra Putra Pratama | …………… |
+| Farrel Athallah Kurniawan | …………… |
 
 menyatakan dengan sebenarnya bahwa paper berjudul **"Threshold Keputusan dan Kalibrasi Probabilitas untuk Prioritisasi Pasien Berisiko No-Show pada Kapasitas Pengingat 10%"** (berkas `TTKI_Kelompok11_TopikP5`) dan repositori <https://github.com/CandraPutraPratama/ttki-p5-noshow> (tag `v1.0-final`) memenuhi butir-butir berikut, sesuai Bab 9.1 Buku Panduan Proyek TTKI.
 
@@ -20,7 +20,7 @@ menyatakan dengan sebenarnya bahwa paper berjudul **"Threshold Keputusan dan Kal
 
 - Seluruh angka, tabel, dan gambar hasil di paper berasal dari eksperimen yang kami jalankan sendiri dengan kode di `src/`, dan tersimpan di `results/`, `results_no_sms/`, `results_unseen/`, dan `figures*/`.
 - Kami tidak menyalin angka hasil dari README GitHub, paper, atau repositori lain dan mengklaimnya sebagai hasil kami.
-- Kami tidak membuat referensi, DOI, tabel, atau gambar yang tidak berasal dari eksperimen atau sumber yang dapat diperiksa. Klaim dan angka dari literatur telah dicocokkan dengan PDF aslinya (lihat `references/literature_matrix.csv`). Nomor halaman [6] dan [7] diambil dari metadata Crossref dan perlu dicek ulang ke halaman penerbit.
+- Kami tidak membuat referensi, DOI, tabel, atau gambar yang tidak berasal dari eksperimen atau sumber yang dapat diperiksa. Klaim dan angka dari literatur telah dicocokkan dengan PDF aslinya (lihat `references/literature_matrix.csv`).
 - Hasil dilaporkan apa adanya, termasuk hasil yang tidak mendukung harapan (kalibrasi tidak menaikkan kualitas peringkat; threshold berbasis validasi tidak menandai 10% janji temu uji).
 
 ## 3. Atribusi
@@ -46,3 +46,4 @@ Surabaya, November 2026
 | --- | --- |
 | &nbsp; | &nbsp; |
 | (tanda tangan) | (tanda tangan) |
+| NRP: …………… | NRP: …………… |
