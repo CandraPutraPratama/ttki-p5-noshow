@@ -7,7 +7,7 @@ Kami yang bertanda tangan di bawah ini, anggota Kelompok 11 (Topik P5), Program 
 | Candra Putra Pratama | 3124600086 |
 | Farrel Athallah Kurniawan | 3124600089 |
 
-menyatakan dengan sebenarnya bahwa paper berjudul **"Threshold Keputusan dan Kalibrasi Probabilitas untuk Prioritisasi Pasien Berisiko No-Show pada Kapasitas Pengingat 10%"** (berkas `TTKI_Kelompok11_TopikP5`) dan repositori <https://github.com/CandraPutraPratama/ttki-p5-noshow> (tag `v1.0-final`) memenuhi butir-butir berikut, sesuai Bab 9.1 Buku Panduan Proyek TTKI.
+menyatakan dengan sebenarnya bahwa paper berjudul **"Threshold Keputusan dan Kalibrasi Probabilitas untuk Prioritisasi Pasien Berisiko No-Show pada Kapasitas Pengingat 10%: Replikasi Terkontrol pada Dataset Kaggle"** (berkas `TTKI_Kelompok11_TopikP5`) dan repositori <https://github.com/CandraPutraPratama/ttki-p5-noshow> (tag `v1.0-final`) memenuhi butir-butir berikut, sesuai Bab 9.1 Buku Panduan Proyek TTKI.
 
 ## 1. Sumber data
 

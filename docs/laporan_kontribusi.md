@@ -2,7 +2,7 @@
 
 **Kelompok:** 11
 **Topik:** P5, prediksi no-show janji temu medis
-**Judul paper:** Threshold Keputusan dan Kalibrasi Probabilitas untuk Prioritisasi Pasien Berisiko No-Show pada Kapasitas Pengingat 10%
+**Judul paper:** Threshold Keputusan dan Kalibrasi Probabilitas untuk Prioritisasi Pasien Berisiko No-Show pada Kapasitas Pengingat 10%: Replikasi Terkontrol pada Dataset Kaggle
 **Repositori:** <https://github.com/CandraPutraPratama/ttki-p5-noshow> (tag `v1.0-final`)
 
 ## Pembagian peran
@@ -23,7 +23,7 @@ Porsi kontribusi disepakati seimbang antara kedua anggota (50% : 50%).
 ## Catatan
 
 - Setiap anggota dapat menjelaskan dan mempertanggungjawabkan seluruh isi paper dan repositori, bukan hanya bagiannya sendiri.
-- Penggunaan bantuan AI dilaporkan di `docs/pernyataan_kejujuran_akademik.md` dan di bagian "Ketersediaan Data dan Kode" paper.
+- Penggunaan bantuan AI dilaporkan di `docs/pernyataan_kejujuran_akademik.docx` dan di bagian "Ketersediaan Data dan Kode" paper.
 - Riwayat kerja teknis dapat dicocokkan dengan riwayat commit di GitHub.
 
 Surabaya, November 2026

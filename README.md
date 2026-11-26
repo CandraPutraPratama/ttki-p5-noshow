@@ -109,7 +109,7 @@ Angka utama yang seharusnya muncul di `results/summary.csv` (data uji, kapasitas
 
 ## Dokumen pengumpulan
 
-Folder `docs/` berisi `laporan_kontribusi.md`, `pernyataan_kejujuran_akademik.md`, dan `response_to_review.md` (tabel respons peer review, diisi setelah sesi review kelas). PDF paper final ada di `paper/TTKI_Kelompok11_TopikP5.pdf`.
+Folder `docs/` berisi `laporan_kontribusi.md`, `pernyataan_kejujuran_akademik.md`, dan `response_to_review.md` (tabel respons peer review, diisi setelah sesi review kelas), masing-masing dengan versi `.docx` untuk diunggah. PDF paper final ada di `paper/TTKI_Kelompok11_TopikP5.pdf`.
 
 ## Paper
 
